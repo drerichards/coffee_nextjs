@@ -12,6 +12,7 @@
 
 .title1 {
     color: rgba(249, 250, 251, 1);
+    text-shadow: var(--text-shadow-light) 0px 1px 2px;
 }
 
 .title2 {
@@ -21,9 +22,11 @@
 
 .subtitle {
     margin-top: 0.75rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 2rem;
     color: var(--text-white-100);
+    text-shadow: var(--text-shadow-dark) 0px 1px 1.5px;
+    font-weight: 100;
 }
 
 .buttonWrapper {
@@ -81,6 +84,7 @@
 
   .subtitle {
     margin-top: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .button {
@@ -105,7 +109,6 @@
   }
 
   .title2 {
-    padding-left: 0.5rem;
   }
 
   .subtitle {
@@ -122,5 +125,6 @@
 @media (min-width: 1280px) {
   .title2 {
     display: inline;
+    padding-left: 0.5rem;
   }
 }
