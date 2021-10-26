@@ -21,3 +21,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --text-black: rgba(17, 24, 39, 1);
+  --text-white-100: rgba(229, 231, 235, 1);
+  --text-blue: #211683;
+  --text-blue-dark: #140d4f;
+}
