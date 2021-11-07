@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CoffeeShop = () => {
-    return (
-        <div>
-            CoffeeShop
-        </div>
-    )
-}
+  return <div>CoffeeShop</div>;
+};
 
-export default CoffeeShop
+export default CoffeeShop;

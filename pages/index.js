@@ -1,24 +1,24 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Banner from "../components/banner"
-import Card from "../components/card"
+import Head from "next/head";
+import Image from "next/image";
+import Banner from "../components/banner";
+import Card from "../components/card";
 
-import styles from '../styles/Home.module.css'
-import coffeeShopsData from "../data/coffee-stores.json"
+import styles from "../styles/Home.module.css";
+import coffeeShopsData from "../data/coffee-stores.json";
 
-export async function getStaticProps (context) {
+export async function getStaticProps(context) {
   return {
     props: {
-      coffeeShops: coffeeShopsData
-    } // gets passed to the page comp as props
-  }
+      coffeeShops: coffeeShopsData,
+    }, // gets passed to the page comp as props
+  };
 }
 
-export default function Home (props) {
-  console.log(props)
-  const handleBannerBtnClick = e => {
-    console.log(e)
-  }
+export default function Home(props) {
+  console.log(props);
+  const handleBannerBtnClick = (e) => {
+    console.log(e);
+  };
 
   return (
     <div className={styles.container}>
@@ -29,15 +29,23 @@ export default function Home (props) {
       </Head>
 
       <main className={styles.main}>
-        <Banner buttonText="View stores nearby" handleClick={handleBannerBtnClick} />
+        <Banner
+          buttonText="View stores nearby"
+          handleClick={handleBannerBtnClick}
+        />
         <div className={styles.heroImage}>
-          <Image src="/static/hero-image.svg" alt="Hero Image" width={800} height={500} />
+          <Image
+            src="/static/hero-image.svg"
+            alt="Hero Image"
+            width={800}
+            height={500}
+          />
         </div>
         {props.coffeeShops.length > 0 && (
           <>
             <h2 className={styles.heading2}>Toronto Coffee Shops</h2>
             <div className={styles.cardLayout}>
-              {props.coffeeShops.map(store => (
+              {props.coffeeShops.map((store) => (
                 <Card
                   key={store.id}
                   className={styles.card}
@@ -51,5 +59,5 @@ export default function Home (props) {
         )}
       </main>
     </div>
-  )
+  );
 }

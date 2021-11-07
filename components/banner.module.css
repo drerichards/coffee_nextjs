@@ -1,51 +1,51 @@
 .container {
-    margin-bottom: 6rem;
+  margin-bottom: 6rem;
 }
 
 .title {
-    letter-spacing: -0.025em;
-    font-weight: 800;
-    color: var(--text-black);
-    font-size: 3rem;
-    line-height: 1;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  color: var(--text-black);
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .title1 {
-    color: rgba(249, 250, 251, 1);
-    text-shadow: var(--text-shadow-light) 0px 1px 2px;
+  color: rgba(249, 250, 251, 1);
+  text-shadow: var(--text-shadow-light) 0px 1px 2px;
 }
 
 .title2 {
-    display: block;
-    color: var(--text-blue);
+  display: block;
+  color: var(--text-blue);
 }
 
 .subtitle {
-    margin-top: 0.75rem;
-    font-size: 1.25rem;
-    line-height: 2rem;
-    color: var(--text-white-100);
-    text-shadow: var(--text-shadow-dark) 0px 1px 1.5px;
-    font-weight: 100;
+  margin-top: 0.75rem;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: var(--text-white-100);
+  text-shadow: var(--text-shadow-dark) 0px 1px 1.5px;
+  font-weight: 100;
 }
 
 .buttonWrapper {
-    margin-top: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .button {
-    background-color: var(--text-blue);
-    cursor: pointer;
-    color: #fff;
-    outline: 0;
-    border: 0px;
-    padding: 1rem 2.5rem;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+  background-color: var(--text-blue);
+  cursor: pointer;
+  color: #fff;
+  outline: 0;
+  border: 0px;
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .button:hover {
-    background-color: var(--text-blue-dark);
+  background-color: var(--text-blue-dark);
 }
 
 /* 
