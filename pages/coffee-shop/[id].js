@@ -39,6 +39,9 @@ const CoffeeShop = (props) => {
     return <div>Loading...</div>;
   }
   const { address, img, name, neighbourhood } = props.coffeeShop;
+  const handleUpvoteClick = () => {
+    console.log("click");
+  };
 
   return (
     <div className={styles.layout}>
@@ -66,15 +69,15 @@ const CoffeeShop = (props) => {
         </div>
         <div className={cls("glass", styles.col2)}>
           <div className={styles.iconWrapper}>
-            <Image src="/" width="24" height="24" alt="icon" />
+            <Image src="/static/icons/places.svg" width="24" height="24" alt="icon" />
             <p className={styles.text}>{address}</p>
           </div>
           <div className={styles.iconWrapper}>
-            <Image src="/" width="24" height="24" alt="icon" />
+            <Image src="/static/icons/nearMe.svg" width="24" height="24" alt="icon" />
             <p className={styles.text}>{neighbourhood}</p>
           </div>
           <div className={styles.iconWrapper}>
-            <Image src="/" width="24" height="24" alt="icon" />
+            <Image src="/static/icons/star.svg" width="24" height="24" alt="icon" />
             <p className={styles.text}>5</p>
           </div>
           <button className={styles.upvoteButton} onClick={handleUpvoteClick}>
