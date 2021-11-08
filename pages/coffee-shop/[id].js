@@ -9,7 +9,7 @@ import styles from "../../styles/Coffee-shop.module.css";
 
 export async function getStaticProps(staticProps) {
   const params = staticProps.params;
-  const term = "coffee";
+  const term = "coffee shop";
   const location = "toronto";
   const coffeeShops = await fetchCoffeeShops(term, location, 6);
 
@@ -24,7 +24,7 @@ export async function getStaticProps(staticProps) {
 
 export async function getStaticPaths() {
   //map all the ids to paths so that you don't have to hard code
-  const term = "coffee";
+  const term = "coffee shop";
   const location = "toronto";
   const coffeeShops = await fetchCoffeeShops(term, location, 6);
   const paths = coffeeShops.map((store) => ({
@@ -39,14 +39,13 @@ export async function getStaticPaths() {
 }
 
 const CoffeeShop = ({ coffeeShop }) => {
-  const dummyImg =
-    "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80";
+  
   const router = useRouter();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  const { location, image_url, name, rating } = coffeeShop;
+  const { location, img, name, rating } = coffeeShop;
   const handleUpvoteClick = () => {
     console.log(coffeeShop);
   };
@@ -59,7 +58,7 @@ const CoffeeShop = ({ coffeeShop }) => {
       <div className={styles.container}>
         <div className={styles.col1}>
           <Link href="/" className={styles.backToHomeLink}>
-            <a>Home</a>
+            <a>← Back to Home</a>
           </Link>
 
           <div className={styles.nameWrapper}>
@@ -68,7 +67,7 @@ const CoffeeShop = ({ coffeeShop }) => {
           <div className={styles.storeImgWrapper}>
             <Image
               className={styles.storeImg}
-              src={image_url || dummyImg}
+              src={img || dummyImg}
               width={600}
               height={360}
               alt={name}
@@ -83,7 +82,7 @@ const CoffeeShop = ({ coffeeShop }) => {
               height="24"
               alt="icon"
             />
-            <p className={styles.text}>{location.address1}</p>
+            <p className={styles.text}>{location.address1 || ""}</p>
             {location.address2 && (
               <p className={styles.text}>{location.address2}</p>
             )}
