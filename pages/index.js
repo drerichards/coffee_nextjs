@@ -3,33 +3,23 @@ import Image from "next/image";
 import Banner from "../components/banner";
 import Card from "../components/card";
 
+import fetchCoffeeShops from "../lib/coffee-shops";
 import styles from "../styles/Home.module.css";
-// import coffeeShopsData from "../data/coffee-stores.json";
 
 export async function getStaticProps(context) {
-  const token =
-    "Bearer DEAEkjpv_kWyfQfI-gDhGNAexoPlVQLuvR4wNqYWmiAX7iMBbfMtQSI0Uh7UTQbLSA22-kIwzvT64Hrjxbq1KMISNBcOOZ3_bKOsd6GPuNEuI1WK8opLx7OYAI2IYXYx";
   const term = "coffee";
   const location = "toronto";
-  const url = `https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&limit=6`;
-  const coffeeShopData = [];
+  const coffeeShops = await fetchCoffeeShops(term, location, 6);
 
-  const settings = {
-    headers: { Authorization: token },
-  };
-  const response = await fetch(url, settings);
-  const data = await response.json();
-  coffeeShopData.push(data);
-  console.log(coffeeShopData);
   return {
     props: {
-      coffeeShops: data.businesses,
+      coffeeShops: coffeeShops,
     }, // gets passed to the page comp as props
   };
 }
 
 export default function Home(props) {
-  // console.log(props);
+  console.log(props);
   const handleBannerBtnClick = (e) => {
     console.log(e);
   };
