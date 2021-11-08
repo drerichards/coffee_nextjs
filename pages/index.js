@@ -11,20 +11,22 @@ export async function getStaticProps(context) {
   const location = "toronto";
   const coffeeShops = await fetchCoffeeShops(term, location, 6);
 
+  // console.log(coffeeShops);
   return {
     props: {
-      coffeeShops: coffeeShops,
+      coffeeShops,
     }, // gets passed to the page comp as props
   };
 }
 
-export default function Home(props) {
-  console.log(props);
+export default function Home({ coffeeShops }) {
   const handleBannerBtnClick = (e) => {
     console.log(e);
   };
+  console.log(coffeeShops);
 
-  const dummyImg = "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80"
+  const dummyImg =
+    "https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80";
 
   return (
     <div className={styles.container}>
@@ -47,17 +49,17 @@ export default function Home(props) {
             height={500}
           />
         </div>
-        {props.coffeeShops.length > 0 && (
+        {coffeeShops.length > 0 && (
           <>
             <h2 className={styles.heading2}>Toronto Coffee Shops</h2>
             <div className={styles.cardLayout}>
-              {props.coffeeShops.map((store) => (
+              {coffeeShops.map((store) => (
                 <Card
                   key={store.id}
                   className={styles.card}
                   name={store.name}
                   href={`/coffee-shop/${store.id}`}
-                  img={dummyImg}
+                  img={store.img}
                 />
               ))}
             </div>
