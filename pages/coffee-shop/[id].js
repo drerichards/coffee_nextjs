@@ -10,6 +10,7 @@ import styles from "../../styles/Coffee-shop.module.css";
 export function getStaticProps(staticProps) {
   const params = staticProps.params;
 
+  
   return {
     props: {
       coffeeShop: coffeeShopsData.find(
