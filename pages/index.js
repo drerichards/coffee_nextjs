@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/banner";
 import Card from "../components/card";
+import useTrackLocation from "../hooks/use-track-location";
 
 import fetchCoffeeShops from "../lib/coffee-shops";
 import styles from "../styles/Home.module.css";
@@ -19,8 +20,10 @@ export async function getStaticProps(context) {
 }
 
 export default function Home({ coffeeShops }) {
+  const { latLong, handleTrackLocation, locationErrorMsg } = useTrackLocation();
   const handleBannerBtnClick = (e) => {
-    console.log(e);
+    console.log({latLong, locationErrorMsg});
+    handleTrackLocation();
   };
 
   return (
