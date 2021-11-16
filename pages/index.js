@@ -3,6 +3,7 @@ import Image from "next/image";
 import Banner from "../components/banner";
 import Card from "../components/card";
 import useTrackLocation from "../hooks/use-track-location";
+import { useEffect } from 'react';
 
 import fetchCoffeeShops from "../lib/coffee-shops";
 import styles from "../styles/Home.module.css";
@@ -10,11 +11,11 @@ import styles from "../styles/Home.module.css";
 export async function getStaticProps(context) {
   const term = "coffee shop";
   const location = "toronto";
-  const coffeeShops = await fetchCoffeeShops(term, location, 6);
+  // const coffeeShops = await fetchCoffeeShops(term, location, 6);
 
   return {
     props: {
-      coffeeShops,
+      // coffeeShops,
     }, // gets passed to the page comp as props
   };
 }
@@ -22,9 +23,24 @@ export async function getStaticProps(context) {
 export default function Home({ coffeeShops }) {
   const { latLong, handleTrackLocation, locationErrorMsg, isLocating } =
     useTrackLocation();
-  console.log({latLong, locationErrorMsg})
+  console.log({latLong})
+
+  useEffect(() => {
+    async function fetchData() {
+      if (latLong) {
+        const fetchedCoffeeShops = await fetchCoffeeShops(
+          "coffee shop",
+          latLong,
+          6
+        );
+        console.log({ fetchedCoffeeShops });
+      }
+    }
+    fetchData();
+  }, [latLong]);
+
   const handleBannerBtnClick = (e) => {
-    console.log({latLong, locationErrorMsg});
+    // console.log({ latLong, locationErrorMsg });
     handleTrackLocation();
   };
 
@@ -38,9 +54,10 @@ export default function Home({ coffeeShops }) {
 
       <main className={styles.main}>
         <Banner
-          buttonText={isLocating ? "Locating...": "View stores nearby"}
+          buttonText={isLocating ? "Locating..." : "View stores nearby"}
           handleClick={handleBannerBtnClick}
         />
+        {locationErrorMsg && <p>Error: {locationErrorMsg}</p>}
         <div className={styles.heroImage}>
           <Image
             src="/static/hero-image.svg"
@@ -49,8 +66,8 @@ export default function Home({ coffeeShops }) {
             height={500}
           />
         </div>
-        {coffeeShops.length > 0 && (
-          <>
+        {/* {coffeeShops.length > 0 && (
+          <div className={styles.sectionWrapper}>
             <h2 className={styles.heading2}>Toronto Coffee Shops</h2>
             <div className={styles.cardLayout}>
               {coffeeShops.map((store) => (
@@ -63,8 +80,8 @@ export default function Home({ coffeeShops }) {
                 />
               ))}
             </div>
-          </>
-        )}
+          </div>
+        )} */}
       </main>
     </div>
   );

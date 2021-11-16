@@ -2,13 +2,13 @@ import { useState } from "react";
 
 const useTrackLocation = () => {
   const [locationErrorMsg, setLocationErrorMsg] = useState("");
-  const [latLong, setLatLong] = useState("");
+  const [latLong, setLatLong] = useState({});
   const [isLocating, setIsLocating] = useState(false);
 
   const success = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    setLatLong(`${latitude}, ${longitude}`);
+    setLatLong({latitude, longitude});
     setLocationErrorMsg("");
     setIsLocating(false);
   };
