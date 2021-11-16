@@ -20,7 +20,9 @@ export async function getStaticProps(context) {
 }
 
 export default function Home({ coffeeShops }) {
-  const { latLong, handleTrackLocation, locationErrorMsg } = useTrackLocation();
+  const { latLong, handleTrackLocation, locationErrorMsg, isLocating } =
+    useTrackLocation();
+  console.log({latLong, locationErrorMsg})
   const handleBannerBtnClick = (e) => {
     console.log({latLong, locationErrorMsg});
     handleTrackLocation();
@@ -36,7 +38,7 @@ export default function Home({ coffeeShops }) {
 
       <main className={styles.main}>
         <Banner
-          buttonText="View stores nearby"
+          buttonText={isLocating ? "Locating...": "View stores nearby"}
           handleClick={handleBannerBtnClick}
         />
         <div className={styles.heroImage}>
